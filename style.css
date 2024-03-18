@@ -1,0 +1,93 @@
+
+:root {
+    --light-gray: #eeeeee; 
+    --teal: #2bd9de; 
+    --green: #2bde73; 
+    --dark-blue: #081245; 
+    --dark-green: #122906; 
+}
+
+body {
+    background-color: var(--light-gray);
+    color: var(--dark-blue);
+}
+
+.navbar {
+    background-color: var(--dark-blue);
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: var(--teal);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--green);
+}
+
+.jumbotron {
+    background-color: var(--teal);
+    color: var(--dark-blue);
+}
+
+.btn-primary {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-green);
+    border-color: var(--dark-green);
+}
+
+.card {
+    border-color: var(--teal);
+}
+
+.card-title {
+    color: var(--dark-blue);
+}
+
+.card-text {
+    color: var(--dark-green);
+}
+
+.footer {
+    background-color: var(--dark-blue);
+    color: var(--teal);
+}
+
+
+/* style.css */
+
+/* ... (previous styles) ... */
+
+.card {
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-body {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card-context {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--dark-blue);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    padding: 0 20px;
+}
+
+.card:hover .card-context {
+    max-height: 200px; 
+    padding: 20px;
+}
+
+.card:hover .card-body {
+    opacity: 0.5; 
+}

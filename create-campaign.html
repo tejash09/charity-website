@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Campaign - CrowdCause</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">CrowdCause</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="create-campaign.html"
+                >Start a Campaign</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Explore Campaigns</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="login.html">Login/Signup</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <h2 class="text-center mb-4">Create a New Campaign</h2>
+      <form>
+        <div class="form-group">
+          <label for="campaignTitle">Campaign Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="campaignTitle"
+            placeholder="Enter campaign title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="campaignDescription">Campaign Description</label>
+          <textarea
+            class="form-control"
+            id="campaignDescription"
+            rows="5"
+            placeholder="Enter campaign description"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="campaignGoal">Funding Goal</label>
+          <input
+            type="number"
+            class="form-control"
+            id="campaignGoal"
+            placeholder="Enter funding goal"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Create Campaign</button>
+      </form>
+    </div>
+    <footer class="bg-primary text-white text-center py-3">
+      <div class="container">
+        <p>&copy; 2023 CrowdCause. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script>
+      $(document).ready(function () {
+        $("#createCampaignForm").on("submit", function (e) {
+          e.preventDefault();
+
+          var formData = $(this).serializeArray();
+          var campaign = {};
+
+          $(formData).each(function (i, field) {
+            campaign[field.name] = field.value;
+          });
+
+          var campaigns = JSON.parse(localStorage.getItem("campaigns")) || [];
+          campaigns.push(campaign);
+          localStorage.setItem("campaigns", JSON.stringify(campaigns));
+
+          window.location.href = "project.html";
+        });
+      });
+    </script>
+  </body>
+</html>

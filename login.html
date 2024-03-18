@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login/Registration - CrowdCause</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">CrowdCause</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="create-campaign.html"
+                >Start a Campaign</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Explore Campaigns</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="login.html">Login/Signup</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="text-center mb-4">Login</h2>
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="loginEmail">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="loginEmail"
+                placeholder="Enter email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="loginPassword"
+                placeholder="Password"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h2 class="text-center mb-4">Register</h2>
+          <form id="registrationForm">
+            <div class="form-group">
+              <label for="registrationEmail">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="registrationEmail"
+                placeholder="Enter email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="registrationPassword">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="registrationPassword"
+                placeholder="Password"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-primary text-white text-center py-3">
+      <div class="container">
+        <p>&copy; 2023 CrowdCause. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var credentials = {
+          "user1@example.com": "password1",
+          "user2@example.com": "password2",
+          "user3@example.com": "password3",
+        };
+
+        $("#loginForm").submit(function (event) {
+          event.preventDefault();
+
+          var email = $("#loginEmail").val();
+          var password = $("#loginPassword").val();
+
+          if (email.trim() === "" || password.trim() === "") {
+            alert("Please enter your email and password.");
+            return;
+          }
+
+          if (credentials[email] === password) {
+            alert("Login successful!");
+            window.location.href = "project.html";
+          } else {
+            alert("Invalid email or password.");
+          }
+
+          $("#loginEmail").val("");
+          $("#loginPassword").val("");
+        });
+
+        $("#registrationForm").submit(function (event) {
+          event.preventDefault();
+
+          var email = $("#registrationEmail").val();
+          var password = $("#registrationPassword").val();
+
+          if (email.trim() === "" || password.trim() === "") {
+            alert("Please enter your email and password.");
+            return;
+          }
+
+          if (credentials[email]) {
+            alert(
+              "Email is already registered. Please choose a different email."
+            );
+            return;
+          }
+
+          credentials[email] = password;
+
+          alert(
+            "Registration successful! You can now login with your credentials."
+          );
+
+          $("#registrationEmail").val("");
+          $("#registrationPassword").val("");
+        });
+      });
+    </script>
+  </body>
+</html>
