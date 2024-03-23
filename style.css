@@ -56,11 +56,6 @@ body {
     color: var(--teal);
 }
 
-
-/* style.css */
-
-/* ... (previous styles) ... */
-
 .card {
     overflow: hidden;
     transition: all 0.3s ease-in-out;
